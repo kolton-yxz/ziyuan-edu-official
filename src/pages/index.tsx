@@ -12,21 +12,21 @@ const Header: React.FC = () => {
   return (
     <header className="bg-white shadow-sm py-4 sticky top-0 z-50">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <div className="flex items-center space-x-2">
+        <Link href="#" className="flex items-center space-x-2">
           <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
             <span className="text-white font-bold text-xl">ZY</span>
           </div>
           <span className="text-xl font-bold text-gray-800">子远教育</span>
-        </div>
+        </Link>
         
         {/* Desktop Navigation */}
         <nav className="hidden md:block">
           <ul className="flex space-x-8">
             <li><Link href="#" className="text-gray-600 hover:text-blue-600 font-medium">首页</Link></li>
-            <li><Link href="#" className="text-gray-600 hover:text-blue-600 font-medium">关于我们</Link></li>
-            <li><Link href="#" className="text-gray-600 hover:text-blue-600 font-medium">服务项目</Link></li>
-            <li><Link href="#" className="text-gray-600 hover:text-blue-600 font-medium">成功案例</Link></li>
-            <li><Link href="#" className="text-gray-600 hover:text-blue-600 font-medium">联系我们</Link></li>
+            <li><Link href="#about" className="text-gray-600 hover:text-blue-600 font-medium">关于我们</Link></li>
+            <li><Link href="#services" className="text-gray-600 hover:text-blue-600 font-medium">服务项目</Link></li>
+            <li><Link href="#testimonials" className="text-gray-600 hover:text-blue-600 font-medium">成功案例</Link></li>
+            <li><Link href="#contact" className="text-gray-600 hover:text-blue-600 font-medium">联系我们</Link></li>
           </ul>
         </nav>
         
@@ -61,10 +61,10 @@ const Header: React.FC = () => {
         <div className="md:hidden bg-white border-t border-gray-200 py-4 px-4">
           <ul className="flex flex-col space-y-4">
             <li><Link href="#" className="block text-gray-600 hover:text-blue-600 font-medium py-2">首页</Link></li>
-            <li><Link href="#" className="block text-gray-600 hover:text-blue-600 font-medium py-2">关于我们</Link></li>
-            <li><Link href="#" className="block text-gray-600 hover:text-blue-600 font-medium py-2">服务项目</Link></li>
-            <li><Link href="#" className="block text-gray-600 hover:text-blue-600 font-medium py-2">成功案例</Link></li>
-            <li><Link href="#" className="block text-gray-600 hover:text-blue-600 font-medium py-2">联系我们</Link></li>
+            <li><Link href="#about" className="block text-gray-600 hover:text-blue-600 font-medium py-2">关于我们</Link></li>
+            <li><Link href="#services" className="block text-gray-600 hover:text-blue-600 font-medium py-2">服务项目</Link></li>
+            <li><Link href="#testimonials" className="block text-gray-600 hover:text-blue-600 font-medium py-2">成功案例</Link></li>
+            <li><Link href="#contact" className="block text-gray-600 hover:text-blue-600 font-medium py-2">联系我们</Link></li>
             <li>
               <button className="w-full text-left bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition duration-300">
                 免费咨询
@@ -80,7 +80,7 @@ const Header: React.FC = () => {
 // Hero Section Component
 const HeroSection: React.FC = () => {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-r from-blue-50 to-indigo-50">
+    <section id="home" className="py-16 md:py-24 bg-gradient-to-r from-blue-50 to-indigo-50">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-10 md:mb-0">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight mb-4">
@@ -91,12 +91,12 @@ const HeroSection: React.FC = () => {
             子远教育致力于为学生提供最优质的留学规划服务，帮助您实现海外名校梦想。
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition duration-300">
+            <Link href="#contact" className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition duration-300 inline-block text-center">
               开始咨询
-            </button>
-            <button className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full font-medium hover:bg-blue-50 transition duration-300">
+            </Link>
+            <Link href="#services" className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full font-medium hover:bg-blue-50 transition duration-300 inline-block text-center">
               了解更多
-            </button>
+            </Link>
           </div>
         </div>
         <div className="md:w-1/2 flex justify-center">
@@ -156,7 +156,7 @@ const ServiceGrid: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section id="services" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">我们的核心服务</h2>
@@ -184,15 +184,120 @@ const ServiceGrid: React.FC = () => {
   );
 };
 
+// About Us Section Component
+const AboutUsSection: React.FC = () => {
+  return (
+    <section id="about" className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">关于我们</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            深圳市子远教育咨询有限公司致力于为学生提供最优质的留学规划服务，
+            帮助您实现海外名校梦想。我们拥有专业的顾问团队和丰富的行业经验。
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="text-center p-6 bg-white rounded-xl shadow-sm">
+            <div className="text-4xl mb-4 text-blue-600">🎓</div>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">专业团队</h3>
+            <p className="text-gray-600">
+              资深留学顾问，具备海外名校背景和丰富申请经验
+            </p>
+          </div>
+          
+          <div className="text-center p-6 bg-white rounded-xl shadow-sm">
+            <div className="text-4xl mb-4 text-blue-600">📊</div>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">成功案例</h3>
+            <p className="text-gray-600">
+              超过千名学生成功进入世界顶尖大学，录取率达95%
+            </p>
+          </div>
+          
+          <div className="text-center p-6 bg-white rounded-xl shadow-sm">
+            <div className="text-4xl mb-4 text-blue-600">🌍</div>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">全球网络</h3>
+            <p className="text-gray-600">
+              与多国院校建立合作关系，提供全方位留学服务
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Testimonials Section Component
+const TestimonialsSection: React.FC = () => {
+  return (
+    <section id="testimonials" className="py-16 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">成功案例</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            听听我们的学生和家长如何评价子远教育的优质服务
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
+            <div className="text-yellow-400 text-2xl mb-4">★★★★★</div>
+            <p className="text-gray-600 mb-4">
+              "子远教育的顾问非常专业，从选校到文书写作都给了我很多帮助，最终成功拿到了心仪学校的offer！"
+            </p>
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">张同学</div>
+              <div>
+                <div className="font-medium text-gray-800">张同学</div>
+                <div className="text-sm text-gray-500">哥伦比亚大学</div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
+            <div className="text-yellow-400 text-2xl mb-4">★★★★★</div>
+            <p className="text-gray-600 mb-4">
+              "感谢子远教育的全程指导，从文书到面试都提供了细致的帮助，让孩子顺利进入理想学校。"
+            </p>
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">李家长</div>
+              <div>
+                <div className="font-medium text-gray-800">李家长</div>
+                <div className="text-sm text-gray-500">哈佛大学</div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
+            <div className="text-yellow-400 text-2xl mb-4">★★★★★</div>
+            <p className="text-gray-600 mb-4">
+              "签证办理非常顺利，在子远教育的帮助下，整个流程都很高效，很放心。"
+            </p>
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">王同学</div>
+              <div>
+                <div className="font-medium text-gray-800">王同学</div>
+                <div className="text-sm text-gray-500">斯坦福大学</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 // Main Page Component
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
       <HeroSection />
+      <AboutUsSection />
       <ServiceGrid />
+      <TestimonialsSection />
       
-      <footer className="bg-gray-800 text-white py-12">
+      <footer id="contact" className="bg-gray-800 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
