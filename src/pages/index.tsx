@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   return (
     <header className="bg-white shadow-sm py-4 sticky top-0 z-50">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="#" className="flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-2">
           <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
             <span className="text-white font-bold text-xl">ZY</span>
           </div>
@@ -22,7 +22,7 @@ const Header: React.FC = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:block">
           <ul className="flex space-x-8">
-            <li><Link href="#" className="text-gray-600 hover:text-blue-600 font-medium">首页</Link></li>
+            <li><Link href="/" className="text-gray-600 hover:text-blue-600 font-medium">首页</Link></li>
             <li><Link href="#about" className="text-gray-600 hover:text-blue-600 font-medium">关于我们</Link></li>
             <li><Link href="#services" className="text-gray-600 hover:text-blue-600 font-medium">服务项目</Link></li>
             <li><Link href="#testimonials" className="text-gray-600 hover:text-blue-600 font-medium">成功案例</Link></li>
@@ -51,24 +51,24 @@ const Header: React.FC = () => {
           </button>
         </div>
         
-        <button className="bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition duration-300 hidden md:block">
+        <Link href="#contact" className="bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition duration-300 hidden md:block">
           免费咨询
-        </button>
+        </Link>
       </div>
       
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200 py-4 px-4">
           <ul className="flex flex-col space-y-4">
-            <li><Link href="#" className="block text-gray-600 hover:text-blue-600 font-medium py-2">首页</Link></li>
+            <li><Link href="/" className="block text-gray-600 hover:text-blue-600 font-medium py-2">首页</Link></li>
             <li><Link href="#about" className="block text-gray-600 hover:text-blue-600 font-medium py-2">关于我们</Link></li>
             <li><Link href="#services" className="block text-gray-600 hover:text-blue-600 font-medium py-2">服务项目</Link></li>
             <li><Link href="#testimonials" className="block text-gray-600 hover:text-blue-600 font-medium py-2">成功案例</Link></li>
             <li><Link href="#contact" className="block text-gray-600 hover:text-blue-600 font-medium py-2">联系我们</Link></li>
             <li>
-              <button className="w-full text-left bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition duration-300">
+              <Link href="#contact" className="block w-full text-left bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition duration-300">
                 免费咨询
-              </button>
+              </Link>
             </li>
           </ul>
         </div>
@@ -91,10 +91,10 @@ const HeroSection: React.FC = () => {
             子远教育致力于为学生提供最优质的留学规划服务，帮助您实现海外名校梦想。
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <Link href="#contact" className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition duration-300 inline-block text-center">
+            <Link href="#contact" className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition duration-300">
               开始咨询
             </Link>
-            <Link href="#services" className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full font-medium hover:bg-blue-50 transition duration-300 inline-block text-center">
+            <Link href="#services" className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full font-medium hover:bg-blue-50 transition duration-300">
               了解更多
             </Link>
           </div>
