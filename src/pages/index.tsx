@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
+import Button from '@/components/ui/Button';
+import Section from '@/components/ui/Section';
 
 // Header Component
 const Header: React.FC = () => {
@@ -51,8 +53,10 @@ const Header: React.FC = () => {
           </button>
         </div>
         
-        <Link href="#contact" className="bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition duration-300 hidden md:block">
-          免费咨询
+        <Link href="#contact" className="hidden md:block">
+          <Button variant="primary" size="md">
+            免费咨询
+          </Button>
         </Link>
       </div>
       
@@ -66,8 +70,10 @@ const Header: React.FC = () => {
             <li><Link href="#testimonials" className="block text-gray-600 hover:text-blue-600 font-medium py-2">成功案例</Link></li>
             <li><Link href="#contact" className="block text-gray-600 hover:text-blue-600 font-medium py-2">联系我们</Link></li>
             <li>
-              <Link href="#contact" className="block w-full text-left bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition duration-300">
-                免费咨询
+              <Link href="#contact" className="block w-full">
+                <Button variant="primary" size="md" fullWidth={true}>
+                  免费咨询
+                </Button>
               </Link>
             </li>
           </ul>
@@ -80,8 +86,8 @@ const Header: React.FC = () => {
 // Hero Section Component
 const HeroSection: React.FC = () => {
   return (
-    <section id="home" className="py-16 md:py-24 bg-gradient-to-r from-blue-50 to-indigo-50">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
+    <Section id="home" background="gradient">
+      <div className="flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-10 md:mb-0">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight mb-4">
             专业的留学咨询服务
@@ -91,11 +97,15 @@ const HeroSection: React.FC = () => {
             子远教育致力于为学生提供最优质的留学规划服务，帮助您实现海外名校梦想。
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <Link href="#contact" className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition duration-300">
-              开始咨询
+            <Link href="#contact">
+              <Button variant="primary" size="lg">
+                开始咨询
+              </Button>
             </Link>
-            <Link href="#services" className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full font-medium hover:bg-blue-50 transition duration-300">
-              了解更多
+            <Link href="#services">
+              <Button variant="outline" size="lg">
+                了解更多
+              </Button>
             </Link>
           </div>
         </div>
@@ -109,7 +119,7 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 
@@ -156,134 +166,128 @@ const ServiceGrid: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">我们的核心服务</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            为每一位学生提供全方位、个性化的留学服务，助力您的国际教育之路
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div 
-              key={index}
-              className="bg-gray-50 p-8 rounded-xl border border-gray-100 hover:shadow-lg transition duration-300 hover:border-blue-200"
-            >
-              <div className="text-4xl mb-4" aria-label={service.title}>
-                <span aria-hidden="true">{service.icon}</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{service.title}</h3>
-              <p className="text-gray-600">{service.description}</p>
-            </div>
-          ))}
-        </div>
+    <Section id="services" background="white">
+      <div className="text-center mb-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">我们的核心服务</h2>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          为每一位学生提供全方位、个性化的留学服务，助力您的国际教育之路
+        </p>
       </div>
-    </section>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service, index) => (
+          <div 
+            key={index}
+            className="bg-gray-50 p-8 rounded-xl border border-gray-100 hover:shadow-lg transition duration-300 hover:border-blue-200"
+          >
+            <div className="text-4xl mb-4" aria-label={service.title}>
+              <span aria-hidden="true">{service.icon}</span>
+            </div>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">{service.title}</h3>
+            <p className="text-gray-600">{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </Section>
   );
 };
 
 // About Us Section Component
 const AboutUsSection: React.FC = () => {
   return (
-    <section id="about" className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">关于我们</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            深圳市子远教育咨询有限公司致力于为学生提供最优质的留学规划服务，
-            帮助您实现海外名校梦想。我们拥有专业的顾问团队和丰富的行业经验。
+    <Section id="about" background="gray">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">关于我们</h2>
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          深圳市子远教育咨询有限公司致力于为学生提供最优质的留学规划服务，
+          帮助您实现海外名校梦想。我们拥有专业的顾问团队和丰富的行业经验。
+        </p>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="text-center p-6 bg-white rounded-xl shadow-sm">
+          <div className="text-4xl mb-4 text-blue-600">🎓</div>
+          <h3 className="text-xl font-bold text-gray-800 mb-2">专业团队</h3>
+          <p className="text-gray-600">
+            资深留学顾问，具备海外名校背景和丰富申请经验
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center p-6 bg-white rounded-xl shadow-sm">
-            <div className="text-4xl mb-4 text-blue-600">🎓</div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">专业团队</h3>
-            <p className="text-gray-600">
-              资深留学顾问，具备海外名校背景和丰富申请经验
-            </p>
-          </div>
-          
-          <div className="text-center p-6 bg-white rounded-xl shadow-sm">
-            <div className="text-4xl mb-4 text-blue-600">📊</div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">成功案例</h3>
-            <p className="text-gray-600">
-              超过千名学生成功进入世界顶尖大学，录取率达95%
-            </p>
-          </div>
-          
-          <div className="text-center p-6 bg-white rounded-xl shadow-sm">
-            <div className="text-4xl mb-4 text-blue-600">🌍</div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">全球网络</h3>
-            <p className="text-gray-600">
-              与多国院校建立合作关系，提供全方位留学服务
-            </p>
-          </div>
+        <div className="text-center p-6 bg-white rounded-xl shadow-sm">
+          <div className="text-4xl mb-4 text-blue-600">📊</div>
+          <h3 className="text-xl font-bold text-gray-800 mb-2">成功案例</h3>
+          <p className="text-gray-600">
+            超过千名学生成功进入世界顶尖大学，录取率达95%
+          </p>
+        </div>
+        
+        <div className="text-center p-6 bg-white rounded-xl shadow-sm">
+          <div className="text-4xl mb-4 text-blue-600">🌍</div>
+          <h3 className="text-xl font-bold text-gray-800 mb-2">全球网络</h3>
+          <p className="text-gray-600">
+            与多国院校建立合作关系，提供全方位留学服务
+          </p>
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 
 // Testimonials Section Component
 const TestimonialsSection: React.FC = () => {
   return (
-    <section id="testimonials" className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">成功案例</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            听听我们的学生和家长如何评价子远教育的优质服务
+    <Section id="testimonials" background="white">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">成功案例</h2>
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          听听我们的学生和家长如何评价子远教育的优质服务
+        </p>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
+          <div className="text-yellow-400 text-2xl mb-4">★★★★★</div>
+          <p className="text-gray-600 mb-4">
+            "子远教育的顾问非常专业，从选校到文书写作都给了我很多帮助，最终成功拿到了心仪学校的offer！"
           </p>
+          <div className="flex items-center">
+            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">张同学</div>
+            <div>
+              <div className="font-medium text-gray-800">张同学</div>
+              <div className="text-sm text-gray-500">哥伦比亚大学</div>
+            </div>
+          </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
-            <div className="text-yellow-400 text-2xl mb-4">★★★★★</div>
-            <p className="text-gray-600 mb-4">
-              "子远教育的顾问非常专业，从选校到文书写作都给了我很多帮助，最终成功拿到了心仪学校的offer！"
-            </p>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">张同学</div>
-              <div>
-                <div className="font-medium text-gray-800">张同学</div>
-                <div className="text-sm text-gray-500">哥伦比亚大学</div>
-              </div>
+        <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
+          <div className="text-yellow-400 text-2xl mb-4">★★★★★</div>
+          <p className="text-gray-600 mb-4">
+            "感谢子远教育的全程指导，从文书到面试都提供了细致的帮助，让孩子顺利进入理想学校。"
+          </p>
+          <div className="flex items-center">
+            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">李家长</div>
+            <div>
+              <div className="font-medium text-gray-800">李家长</div>
+              <div className="text-sm text-gray-500">哈佛大学</div>
             </div>
           </div>
-          
-          <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
-            <div className="text-yellow-400 text-2xl mb-4">★★★★★</div>
-            <p className="text-gray-600 mb-4">
-              "感谢子远教育的全程指导，从文书到面试都提供了细致的帮助，让孩子顺利进入理想学校。"
-            </p>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">李家长</div>
-              <div>
-                <div className="font-medium text-gray-800">李家长</div>
-                <div className="text-sm text-gray-500">哈佛大学</div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
-            <div className="text-yellow-400 text-2xl mb-4">★★★★★</div>
-            <p className="text-gray-600 mb-4">
-              "签证办理非常顺利，在子远教育的帮助下，整个流程都很高效，很放心。"
-            </p>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">王同学</div>
-              <div>
-                <div className="font-medium text-gray-800">王同学</div>
-                <div className="text-sm text-gray-500">斯坦福大学</div>
-              </div>
+        </div>
+        
+        <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
+          <div className="text-yellow-400 text-2xl mb-4">★★★★★</div>
+          <p className="text-gray-600 mb-4">
+            "签证办理非常顺利，在子远教育的帮助下，整个流程都很高效，很放心。"
+          </p>
+          <div className="flex items-center">
+            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">王同学</div>
+            <div>
+              <div className="font-medium text-gray-800">王同学</div>
+              <div className="text-sm text-gray-500">斯坦福大学</div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 
