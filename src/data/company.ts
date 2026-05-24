@@ -342,6 +342,6 @@ export const offerImages = [
   { school: "悉尼大学", major: "商学学士", background: "普高转ACT 33 / 雅思6.0", image: "/images/offers/2025/offer-usyd-commerce-2025.png" },
   { school: "新南威尔士大学", major: "本科", background: "普高转ACT 34 / 雅思7.0", image: "/images/offers/2025/offer-unsw-2025.png" },
   { school: "曼彻斯特大学", major: "国际发展公共政策硕士", background: "双非一本 / 均分87 / 雅思6.5", image: "/images/offers/2025/offer-manchester-id-2025.png" },
-  { school: "待定", major: "待定", background: "待补充", image: "/images/offers/2025/offer-unknown-1-2025.png" },
-  { school: "待定", major: "待定", background: "待补充", image: "/images/offers/2025/offer-unknown-2-2025.png" },
+  { school: "香港中文大学", major: "工程学院 Electrical Engineering MPhil", background: "211高校 / 均分87.2 / 雅思7.0", image: "/images/offers/2025/offer-cuhk-elec-2025.png" },
+  { school: "澳洲国立大学", major: "国际关系学士 (本科)", background: "ACT 33 / 雅思6.5", image: "/images/offers/2025/offer-anu-ir-2026.png" },
 ];
