@@ -2,78 +2,89 @@ import Link from 'next/link';
 import { useState } from 'react';
 import Button from '@/components/ui/Button';
 import Section from '@/components/ui/Section';
+import {
+  brand,
+  coreValues,
+  stats,
+  offerDistribution,
+  services,
+  pacdSystem,
+  destinations,
+  programTypes,
+  successCases,
+  contacts,
+  serviceCenters,
+  backgroundResources,
+  partnerUniversities,
+  timeline,
+} from '@/data/company';
 
-// Header Component
+// ---------- Header ----------
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
-    <header className="bg-white shadow-sm py-4 sticky top-0 z-50">
+    <header className="bg-white shadow-sm py-3 sticky top-0 z-50">
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-xl">ZY</span>
+          {/* Logo 占位 — 替换为实际 ZEVEDU logo 图片 */}
+          <div className="flex items-center space-x-2">
+            <span className="text-2xl font-extrabold tracking-tight" style={{ background: 'linear-gradient(135deg, #1e40af, #1e3a5f)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              {brand.nameEn}
+            </span>
+            <span className="text-sm text-gray-500 hidden sm:inline">{brand.name}</span>
           </div>
-          <span className="text-xl font-bold text-gray-800">子远教育</span>
         </Link>
-        
+
         {/* Desktop Navigation */}
-        <nav className="hidden md:block">
-          <ul className="flex space-x-8">
-            <li><Link href="/" className="text-gray-600 hover:text-blue-600 font-medium">首页</Link></li>
-            <li><Link href="#about" className="text-gray-600 hover:text-blue-600 font-medium">关于我们</Link></li>
-            <li><Link href="#services" className="text-gray-600 hover:text-blue-600 font-medium">服务项目</Link></li>
-            <li><Link href="#testimonials" className="text-gray-600 hover:text-blue-600 font-medium">成功案例</Link></li>
-            <li><Link href="#contact" className="text-gray-600 hover:text-blue-600 font-medium">联系我们</Link></li>
-          </ul>
+        <nav className="hidden lg:flex items-center space-x-6">
+          <Link href="#home" className="text-gray-600 hover:text-blue-600 font-medium text-sm">首页</Link>
+          <Link href="#about" className="text-gray-600 hover:text-blue-600 font-medium text-sm">关于我们</Link>
+          <Link href="#services" className="text-gray-600 hover:text-blue-600 font-medium text-sm">核心服务</Link>
+          <Link href="#destinations" className="text-gray-600 hover:text-blue-600 font-medium text-sm">留学国家</Link>
+          <Link href="#cases" className="text-gray-600 hover:text-blue-600 font-medium text-sm">成功案例</Link>
+          <Link href="#contact" className="text-gray-600 hover:text-blue-600 font-medium text-sm">联系我们</Link>
+          <Link href="#contact">
+            <Button variant="primary" size="sm">
+              免费咨询
+            </Button>
+          </Link>
         </nav>
-        
+
         {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center space-x-4">
-          <button 
-            onClick={toggleMenu}
-            className="text-gray-600 focus:outline-none"
-            aria-label="切换导航菜单"
-          >
+        <button
+          className="lg:hidden p-2"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="切换导航菜单"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isMenuOpen ? (
-              // Close icon
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             ) : (
-              // Hamburger icon
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
             )}
-          </button>
-        </div>
-        
-        <Link href="#contact" className="hidden md:block">
-          <Button variant="primary" size="md">
-            免费咨询
-          </Button>
-        </Link>
+          </svg>
+        </button>
       </div>
-      
+
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 py-4 px-4">
-          <ul className="flex flex-col space-y-4">
-            <li><Link href="/" className="block text-gray-600 hover:text-blue-600 font-medium py-2">首页</Link></li>
-            <li><Link href="#about" className="block text-gray-600 hover:text-blue-600 font-medium py-2">关于我们</Link></li>
-            <li><Link href="#services" className="block text-gray-600 hover:text-blue-600 font-medium py-2">服务项目</Link></li>
-            <li><Link href="#testimonials" className="block text-gray-600 hover:text-blue-600 font-medium py-2">成功案例</Link></li>
-            <li><Link href="#contact" className="block text-gray-600 hover:text-blue-600 font-medium py-2">联系我们</Link></li>
+        <div className="lg:hidden bg-white border-t border-gray-100 py-4 px-4">
+          <ul className="flex flex-col space-y-3">
+            {['首页', '关于我们', '核心服务', '留学国家', '成功案例', '联系我们'].map((item, i) => (
+              <li key={i}>
+                <Link
+                  href={`#${['home', 'about', 'services', 'destinations', 'cases', 'contact'][i]}`}
+                  className="block text-gray-600 hover:text-blue-600 font-medium py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item}
+                </Link>
+              </li>
+            ))}
             <li>
-              <Link href="#contact" className="block w-full">
-                <Button variant="primary" size="md" fullWidth={true}>
-                  免费咨询
-                </Button>
+              <Link href="#contact" onClick={() => setIsMenuOpen(false)}>
+                <Button variant="primary" size="md" fullWidth>免费咨询</Button>
               </Link>
             </li>
           </ul>
@@ -83,23 +94,28 @@ const Header: React.FC = () => {
   );
 };
 
-// Hero Section Component
-const HeroSection: React.FC = () => {
-  return (
-    <Section id="home" background="gradient">
-      <div className="flex flex-col md:flex-row items-center">
-        <div className="md:w-1/2 mb-10 md:mb-0">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight mb-4">
-            专业的留学咨询服务
-            <span className="block text-blue-600 mt-2">助您开启国际教育之旅</span>
+// ---------- Hero Section ----------
+const HeroSection: React.FC = () => (
+  <section id="home" className="relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #ede9fe 100%)' }}>
+    <div className="container mx-auto px-4 py-20 md:py-28">
+      <div className="flex flex-col lg:flex-row items-center gap-12">
+        <div className="lg:w-1/2">
+          <div className="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6">
+            🎓 一站式国际升学与教育规划服务平台
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-4">
+            {coreValues.philosophy}
           </h1>
-          <p className="text-lg text-gray-600 mb-8 max-w-lg">
-            子远教育致力于为学生提供最优质的留学规划服务，帮助您实现海外名校梦想。
+          <p className="text-lg md:text-xl text-gray-600 mb-4 max-w-xl">
+            {brand.description}
           </p>
-          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+          <p className="text-base text-gray-500 mb-8 max-w-xl">
+            服务覆盖名校规划、本硕博升学、香港副学士、中外合作办学、课业辅导、文书服务、面试培训、背景提升、科研实习及签证咨询等多元化内容。
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
             <Link href="#contact">
               <Button variant="primary" size="lg">
-                开始咨询
+                免费评估
               </Button>
             </Link>
             <Link href="#services">
@@ -109,255 +125,432 @@ const HeroSection: React.FC = () => {
             </Link>
           </div>
         </div>
-        <div className="md:w-1/2 flex justify-center">
-          <div 
-            className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64 md:h-80 flex items-center justify-center text-gray-500"
-            aria-label="专业留学咨询团队为学生提供一对一规划服务"
-            role="img"
-          >
-            教育服务展示图
+        <div className="lg:w-1/2 flex justify-center">
+          <div className="relative">
+            <div className="w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-2xl" style={{ background: 'linear-gradient(135deg, #1e40af, #3b82f6)' }}>
+              <div className="w-full h-full flex items-center justify-center text-white">
+                <div className="text-center p-8">
+                  <div className="text-6xl mb-4"></div>
+                  <div className="text-2xl font-bold mb-2">全球名校</div>
+                  <div className="text-lg opacity-80">Offer库 10,000+</div>
+                </div>
+              </div>
+            </div>
+            {/* Decorative elements */}
+            <div className="absolute -top-4 -right-4 w-20 h-20 bg-yellow-400 rounded-full opacity-20" />
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-blue-400 rounded-full opacity-10" />
           </div>
         </div>
       </div>
-    </Section>
-  );
-};
+    </div>
+  </section>
+);
 
-// Define TypeScript interfaces
-interface Service {
-  title: string;
-  description: string;
-  icon: string;
-}
-
-// Service Grid Component
-const ServiceGrid: React.FC = () => {
-  const services: Service[] = [
-    {
-      title: "留学申请规划",
-      description: "专业顾问为您量身定制留学申请方案，提升录取成功率",
-      icon: "🎓",
-    },
-    {
-      title: "语言考试培训",
-      description: "提供托福、雅思、SAT等考试辅导，助力语言成绩提升",
-      icon: "📚",
-    },
-    {
-      title: "签证办理服务",
-      description: "专业团队协助办理留学签证，确保顺利获得签证",
-      icon: "📋",
-    },
-    {
-      title: "海外生活指导",
-      description: "提供住宿、交通、文化适应等全方位生活指导",
-      icon: "🌍",
-    },
-    {
-      title: "背景提升",
-      description: "实习推荐、科研项目、志愿者活动等背景提升服务",
-      icon: "📈",
-    },
-    {
-      title: "职业规划",
-      description: "提供海外就业指导和真实的职业规划建议",
-      icon: "💼",
-    }
-  ];
-
-  return (
-    <Section id="services" background="white">
-      <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">我们的核心服务</h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          为每一位学生提供全方位、个性化的留学服务，助力您的国际教育之路
-        </p>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.map((service, index) => (
-          <div 
-            key={index}
-            className="bg-gray-50 p-8 rounded-xl border border-gray-100 hover:shadow-lg transition duration-300 hover:border-blue-200"
-          >
-            <div className="text-4xl mb-4" aria-label={service.title}>
-              <span aria-hidden="true">{service.icon}</span>
-            </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">{service.title}</h3>
-            <p className="text-gray-600">{service.description}</p>
+// ---------- Stats Section ----------
+const StatsSection: React.FC = () => (
+  <section className="py-12 bg-white border-b border-gray-100">
+    <div className="container mx-auto px-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map((stat, i) => (
+          <div key={i} className="text-center">
+            <div className="text-3xl md:text-4xl font-extrabold text-blue-600 mb-1">{stat.value}</div>
+            <div className="text-sm text-gray-500">{stat.label}</div>
           </div>
         ))}
       </div>
-    </Section>
-  );
-};
+    </div>
+  </section>
+);
 
-// About Us Section Component
-const AboutUsSection: React.FC = () => {
-  return (
-    <Section id="about" background="gray">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">关于我们</h2>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          深圳市子远教育咨询有限公司致力于为学生提供最优质的留学规划服务，
-          帮助您实现海外名校梦想。我们拥有专业的顾问团队和丰富的行业经验。
+// ---------- About Section ----------
+const AboutSection: React.FC = () => (
+  <Section id="about" background="white">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">关于我们</h2>
+      <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        {coreValues.positioning}
+      </p>
+    </div>
+
+    {/* Core Values */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+      <div className="text-center p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100">
+        <div className="text-5xl mb-4">🎯</div>
+        <h3 className="text-xl font-bold text-gray-900 mb-2">专业团队</h3>
+        <p className="text-gray-600 text-sm">
+          资深留学顾问团队，具备海外名校背景和丰富申请经验，文案老师从业超10年
         </p>
       </div>
-      
+      <div className="text-center p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100">
+        <div className="text-5xl mb-4">📊</div>
+        <h3 className="text-xl font-bold text-gray-900 mb-2">高成功率</h3>
+        <p className="text-gray-600 text-sm">
+          累计服务数千名学生，Offer库突破10,000份，申请成功率高达96%
+        </p>
+      </div>
+      <div className="text-center p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100">
+        <div className="text-5xl mb-4"></div>
+        <h3 className="text-xl font-bold text-gray-900 mb-2">全球网络</h3>
+        <p className="text-gray-600 text-sm">
+          深圳、北京、厦门三地服务，与全球Top 100院校建立深度合作关系
+        </p>
+      </div>
+    </div>
+
+    {/* PACD System */}
+    <div className="mb-20">
+      <div className="text-center mb-12">
+        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">{pacdSystem.title}</h3>
+        <p className="text-gray-600">{pacdSystem.subtitle}</p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {pacdSystem.items.map((item) => (
+          <div key={item.letter} className="relative p-6 bg-white rounded-2xl border-2 border-blue-100 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-md">
+            <div className="absolute -top-4 left-6 w-10 h-10 rounded-full flex items-center justify-center text-white font-extrabold text-lg" style={{ background: 'linear-gradient(135deg, #1e40af, #3b82f6)' }}>
+              {item.letter}
+            </div>
+            <div className="mt-4">
+              <div className="text-sm text-blue-600 font-medium mb-1">{item.name}</div>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Timeline */}
+    <div>
+      <div className="text-center mb-12">
+        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">发展历程</h3>
+        <p className="text-gray-600">从工作室到一站式教育平台</p>
+      </div>
+      <div className="relative">
+        <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-blue-200 -translate-y-1/2" />
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+          {timeline.map((item, i) => (
+            <div key={i} className="relative text-center">
+              <div className="relative z-10 w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center text-white font-bold text-sm" style={{ background: 'linear-gradient(135deg, #1e40af, #3b82f6)' }}>
+                {item.year.slice(-2)}
+              </div>
+              <div className="text-sm font-bold text-blue-600 mb-1">{item.year}年</div>
+              <div className="text-xs font-medium text-gray-800 mb-1">{item.title}</div>
+              <div className="text-xs text-gray-500 hidden lg:block">{item.desc.slice(0, 40)}...</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </Section>
+);
+
+// ---------- Services Section ----------
+const ServicesSection: React.FC = () => (
+  <Section id="services" background="gray">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">核心服务</h2>
+      <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        覆盖留学全流程，从背景评估到录取后学术辅导，提供一站式服务
+      </p>
+    </div>
+
+    {/* Program Types */}
+    <div className="flex flex-wrap justify-center gap-4 mb-12">
+      {programTypes.map((p, i) => (
+        <span key={i} className="px-5 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium border border-blue-100">
+          {p.name}
+        </span>
+      ))}
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service, index) => (
+        <div
+          key={index}
+          className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition-all duration-300 hover:border-blue-200 group"
+        >
+          <div className="text-4xl mb-4">{service.icon}</div>
+          <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">{service.title}</h3>
+          <p className="text-sm text-blue-600 font-medium mb-3">{service.subtitle}</p>
+          <p className="text-gray-600 text-sm leading-relaxed mb-4">{service.description}</p>
+          <ul className="space-y-2">
+            {service.features.map((f, fi) => (
+              <li key={fi} className="flex items-start text-sm text-gray-500">
+                <span className="text-blue-500 mr-2 mt-0.5">✓</span>
+                {f}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    {/* Background Resources */}
+    <div className="mt-16 p-8 bg-white rounded-2xl border border-gray-100">
+      <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">背景提升合作资源</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="text-center p-6 bg-white rounded-xl shadow-sm">
-          <div className="text-4xl mb-4 text-blue-600">🎓</div>
-          <h3 className="text-xl font-bold text-gray-800 mb-2">专业团队</h3>
-          <p className="text-gray-600">
-            资深留学顾问，具备海外名校背景和丰富申请经验
-          </p>
+        <div>
+          <h4 className="font-bold text-blue-600 mb-3 text-sm"> 科研项目合作院校</h4>
+          <div className="flex flex-wrap gap-2">
+            {backgroundResources.research.map((r, i) => (
+              <span key={i} className="px-3 py-1 bg-gray-50 text-gray-700 rounded text-xs">{r}</span>
+            ))}
+          </div>
         </div>
-        
-        <div className="text-center p-6 bg-white rounded-xl shadow-sm">
-          <div className="text-4xl mb-4 text-blue-600">📊</div>
-          <h3 className="text-xl font-bold text-gray-800 mb-2">成功案例</h3>
-          <p className="text-gray-600">
-            超过千名学生成功进入世界顶尖大学，录取率达95%
-          </p>
+        <div>
+          <h4 className="font-bold text-blue-600 mb-3 text-sm">💼 名企实习合作</h4>
+          <div className="flex flex-wrap gap-2">
+            {backgroundResources.internships.slice(0, 10).map((r, i) => (
+              <span key={i} className="px-3 py-1 bg-gray-50 text-gray-700 rounded text-xs">{r}</span>
+            ))}
+          </div>
         </div>
-        
-        <div className="text-center p-6 bg-white rounded-xl shadow-sm">
-          <div className="text-4xl mb-4 text-blue-600">🌍</div>
-          <h3 className="text-xl font-bold text-gray-800 mb-2">全球网络</h3>
-          <p className="text-gray-600">
-            与多国院校建立合作关系，提供全方位留学服务
-          </p>
+        <div>
+          <h4 className="font-bold text-blue-600 mb-3 text-sm">🏆 国际竞赛指导</h4>
+          <div className="flex flex-wrap gap-2">
+            {backgroundResources.competitions.map((r, i) => (
+              <span key={i} className="px-3 py-1 bg-gray-50 text-gray-700 rounded text-xs">{r}</span>
+            ))}
+          </div>
         </div>
       </div>
-    </Section>
-  );
-};
+    </div>
+  </Section>
+);
 
-// Testimonials Section Component
-const TestimonialsSection: React.FC = () => {
-  return (
-    <Section id="testimonials" background="white">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">成功案例</h2>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          听听我们的学生和家长如何评价子远教育的优质服务
-        </p>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
-          <div className="text-yellow-400 text-2xl mb-4">★★★★★</div>
-          <p className="text-gray-600 mb-4">
-            "子远教育的顾问非常专业，从选校到文书写作都给了我很多帮助，最终成功拿到了心仪学校的offer！"
-          </p>
-          <div className="flex items-center">
-            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">张同学</div>
-            <div>
-              <div className="font-medium text-gray-800">张同学</div>
-              <div className="text-sm text-gray-500">哥伦比亚大学</div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
-          <div className="text-yellow-400 text-2xl mb-4">★★★★★</div>
-          <p className="text-gray-600 mb-4">
-            "感谢子远教育的全程指导，从文书到面试都提供了细致的帮助，让孩子顺利进入理想学校。"
-          </p>
-          <div className="flex items-center">
-            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">李家长</div>
-            <div>
-              <div className="font-medium text-gray-800">李家长</div>
-              <div className="text-sm text-gray-500">哈佛大学</div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="p-6 bg-gray-50 rounded-xl border border-gray-100">
-          <div className="text-yellow-400 text-2xl mb-4">★★★★★</div>
-          <p className="text-gray-600 mb-4">
-            "签证办理非常顺利，在子远教育的帮助下，整个流程都很高效，很放心。"
-          </p>
-          <div className="flex items-center">
-            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">王同学</div>
-            <div>
-              <div className="font-medium text-gray-800">王同学</div>
-              <div className="text-sm text-gray-500">斯坦福大学</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Section>
-  );
-};
+// ---------- Destinations Section ----------
+const DestinationsSection: React.FC = () => (
+  <Section id="destinations" background="white">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">留学国家与地区</h2>
+      <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        覆盖全球热门留学目的地，累计10,000+成功Offer
+      </p>
+    </div>
 
-// Main Page Component
+    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-12">
+      {offerDistribution.map((d, i) => (
+        <div key={i} className="text-center p-4 bg-gradient-to-b from-blue-50 to-white rounded-xl border border-blue-50 hover:shadow-md transition-all duration-300">
+          <div className="text-3xl mb-2">{d.flag}</div>
+          <div className="font-bold text-gray-900 text-sm">{d.country}</div>
+          <div className="text-blue-600 font-bold text-lg">{d.count}</div>
+          <div className="text-xs text-gray-400">份Offer</div>
+        </div>
+      ))}
+    </div>
+
+    {/* Partner Universities */}
+    <div className="p-8 bg-gray-50 rounded-2xl">
+      <h3 className="text-lg font-bold text-gray-900 mb-4 text-center">部分合作/录取院校</h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        {partnerUniversities.map((u, i) => (
+          <span key={i} className="px-4 py-2 bg-white text-gray-700 rounded-lg text-sm border border-gray-200 shadow-sm">
+            {u}
+          </span>
+        ))}
+      </div>
+    </div>
+  </Section>
+);
+
+// ---------- Success Cases Section ----------
+const CasesSection: React.FC = () => (
+  <Section id="cases" background="gradient">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">成功案例</h2>
+      <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        数千名学生通过子远教育成功进入世界顶尖大学
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {successCases.map((c, i) => (
+        <div key={i} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300">
+          <div className="text-yellow-400 text-lg mb-4">★★★★★</div>
+          <p className="text-gray-600 mb-6 text-sm leading-relaxed italic">
+            "{c.quote}"
+          </p>
+          <div className="border-t border-gray-100 pt-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="font-bold text-gray-900">{c.student}</div>
+                <div className="text-sm text-gray-500">{c.background}</div>
+              </div>
+              <div className="text-right">
+                <div className="text-blue-600 font-bold">{c.university}</div>
+                <div className="text-xs text-gray-400">{c.major} · {c.country}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+);
+
+// ---------- Contact Section ----------
+const ContactSection: React.FC = () => (
+  <Section id="contact" background="white">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">联系我们</h2>
+      <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        添加顾问微信，获取免费留学评估
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      {/* Mora老师 */}
+      <div className="text-center p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100">
+        <div className="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center text-white text-2xl font-bold" style={{ background: 'linear-gradient(135deg, #1e40af, #3b82f6)' }}>
+          M
+        </div>
+        <h3 className="text-xl font-bold text-gray-900 mb-1">Mora老师</h3>
+        <p className="text-blue-600 font-medium mb-4">📱 {contacts[0].phone}</p>
+        <div className="bg-white rounded-xl p-4 inline-block shadow-sm">
+          {/* WeChat QR Code placeholder */}
+          <div className="w-48 h-48 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 text-sm">
+            <div className="text-center">
+              <div className="text-4xl mb-2">📱</div>
+              <div>Mora老师</div>
+              <div className="text-xs mt-1">微信二维码</div>
+              <div className="text-xs text-gray-300 mt-1">/images/contact/wechat-mora.png</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* May老师 */}
+      <div className="text-center p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100">
+        <div className="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center text-white text-2xl font-bold" style={{ background: 'linear-gradient(135deg, #1e40af, #3b82f6)' }}>
+          M
+        </div>
+        <h3 className="text-xl font-bold text-gray-900 mb-1">May老师</h3>
+        <p className="text-blue-600 font-medium mb-4">📱 {contacts[1].phone}</p>
+        <div className="bg-white rounded-xl p-4 inline-block shadow-sm">
+          {/* WeChat QR Code placeholder */}
+          <div className="w-48 h-48 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 text-sm">
+            <div className="text-center">
+              <div className="text-4xl mb-2">📱</div>
+              <div>May老师</div>
+              <div className="text-xs mt-1">微信二维码</div>
+              <div className="text-xs text-gray-300 mt-1">/images/contact/wechat-may.png</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 地址信息 */}
+      <div className="text-center p-8 bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl border border-gray-200">
+        <div className="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center text-3xl" style={{ background: 'linear-gradient(135deg, #1e40af, #3b82f6)' }}>
+          📍
+        </div>
+        <h3 className="text-xl font-bold text-gray-900 mb-1">服务中心</h3>
+        <div className="space-y-3 mt-4">
+          {serviceCenters.map((center, i) => (
+            <div key={i}>
+              <div className="font-bold text-gray-800">{center.city}{center.type}</div>
+              {center.address && (
+                <div className="text-sm text-gray-500">{center.address}</div>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="mt-6 pt-6 border-t border-gray-200">
+          <div className="text-sm text-gray-500">
+            <div className="font-medium text-gray-700 mb-1">营业时间</div>
+            <div>周一至周五 9:00 - 18:00</div>
+            <div>周六 10:00 - 17:00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+);
+
+// ---------- Main Page ----------
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
       <HeroSection />
-      <AboutUsSection />
-      <ServiceGrid />
-      <TestimonialsSection />
-      
-      <footer id="contact" className="bg-gray-800 text-white py-12">
+      <StatsSection />
+      <AboutSection />
+      <ServicesSection />
+      <DestinationsSection />
+      <CasesSection />
+      <ContactSection />
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
             <div>
-              <h4 className="text-lg font-bold mb-4">子远教育</h4>
-              <p className="text-gray-400">
-                专业留学服务，成就您的国际教育梦想
+              <div className="flex items-center space-x-2 mb-4">
+                <span className="text-2xl font-extrabold" style={{ background: 'linear-gradient(135deg, #60a5fa, #93c5fd)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                  {brand.nameEn}
+                </span>
+                <span className="text-sm text-gray-400">{brand.name}</span>
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                {coreValues.positioning}
               </p>
+              <div className="text-sm text-gray-500">
+                <div className="font-medium text-gray-300 mb-1">核心理念</div>
+                <div>"{coreValues.philosophy}"</div>
+              </div>
             </div>
+
             <div>
-              <h4 className="text-lg font-bold mb-4">服务项目</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>留学申请</li>
-                <li>语言培训</li>
-                <li>签证服务</li>
-                <li>背景提升</li>
+              <h4 className="text-lg font-bold mb-4">核心服务</h4>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                {services.slice(0, 5).map((s, i) => (
+                  <li key={i}><Link href="#services" className="hover:text-white transition-colors">{s.title}</Link></li>
+                ))}
               </ul>
             </div>
+
             <div>
               <h4 className="text-lg font-bold mb-4">关于我们</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>公司简介</li>
-                <li>团队介绍</li>
-                <li>成功案例</li>
-                <li>新闻动态</li>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li><Link href="#about" className="hover:text-white transition-colors">公司简介</Link></li>
+                <li><Link href="#about" className="hover:text-white transition-colors">发展历程</Link></li>
+                <li><Link href="#cases" className="hover:text-white transition-colors">成功案例</Link></li>
+                <li><Link href="#destinations" className="hover:text-white transition-colors">合作院校</Link></li>
               </ul>
             </div>
+
             <div>
               <h4 className="text-lg font-bold mb-4">联系方式</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li className="flex items-center">
-                  <span className="sr-only">电话</span>
-                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                  </svg>
-                  <span>400-123-4567</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="sr-only">邮箱</span>
-                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                  </svg>
-                  <span>contact@ziyuanyu.com</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="sr-only">地址</span>
-                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                  </svg>
-                  <span>深圳市南山区科技园南区深圳湾科技生态园</span>
+              <ul className="space-y-3 text-gray-400 text-sm">
+                {contacts.map((c, i) => (
+                  <li key={i} className="flex items-start">
+                    <span className="text-blue-400 mr-2 mt-0.5"></span>
+                    <div>
+                      <div className="text-gray-300 font-medium">{c.name}</div>
+                      <div>{c.phone}</div>
+                    </div>
+                  </li>
+                ))}
+                <li className="flex items-start pt-2 border-t border-gray-700 mt-2">
+                  <span className="text-blue-400 mr-2 mt-0.5">📍</span>
+                  <div>
+                    <div className="text-gray-300 font-medium">深圳服务中心</div>
+                    <div>{serviceCenters[0].address}</div>
+                  </div>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-            © {new Date().getFullYear()} 深圳市子远教育咨询有限公司 版权所有
+
+          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-sm text-gray-500">
+              © {new Date().getFullYear()} 深圳市子远教育咨询有限公司 版权所有
+            </div>
+            <div className="flex items-center space-x-6 text-sm text-gray-500">
+              <span>粤ICP备XXXXXXXX号</span>
+              <Link href="#" className="hover:text-gray-300 transition-colors">隐私政策</Link>
+              <Link href="#" className="hover:text-gray-300 transition-colors">用户协议</Link>
+            </div>
           </div>
         </div>
       </footer>
