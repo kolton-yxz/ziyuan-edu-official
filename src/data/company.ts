@@ -341,6 +341,7 @@ export const offerImages = [
   { school: "澳洲国立大学", major: "市场营销管理硕士", background: "海外本科 / GPA 5.33 / 免语言", image: "/images/offers/2025/offer-anu-marketing-2025.png" },
   { school: "悉尼大学", major: "商学学士", background: "普高转ACT 33 / 雅思6.0", image: "/images/offers/2025/offer-usyd-commerce-2025.png" },
   { school: "新南威尔士大学", major: "本科", background: "普高转ACT 34 / 雅思7.0", image: "/images/offers/2025/offer-unsw-2025.png" },
+  { school: "曼彻斯特大学", major: "国际发展公共政策硕士", background: "双非一本 / 均分87 / 雅思6.5", image: "/images/offers/2025/offer-manchester-id-2025.png" },
   { school: "待定", major: "待定", background: "待补充", image: "/images/offers/2025/offer-unknown-1-2025.png" },
   { school: "待定", major: "待定", background: "待补充", image: "/images/offers/2025/offer-unknown-2-2025.png" },
 ];
