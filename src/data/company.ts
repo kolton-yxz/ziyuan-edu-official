@@ -329,3 +329,18 @@ export const successCases = [
       "签证办理非常顺利，在子远教育的帮助下，整个流程都很高效，很放心。",
   },
 ];
+
+// ---------- 录取捷报图片 ----------
+export const offerImages = [
+  { school: "香港大学", major: "人工智能与数据科学", background: "AL A*A*A*AA / 雅思7.0", image: "/images/offers/2025/offer-hku-aids-2025.png" },
+  { school: "剑桥大学", major: "MPhil 硕士", background: "985高校 / 均分91.68 / 雅思8.0", image: "/images/offers/2025/offer-cambridge-mphil-2025.png" },
+  { school: "伦敦政治经济学院", major: "人力资源与组织硕士", background: "985高校 / 均分87.57 / 雅思6.5", image: "/images/offers/2025/offer-lse-hr-2025.png" },
+  { school: "多伦多大学", major: "商科 Studies in Commerce", background: "AL A*A*AB / 雅思6.5", image: "/images/offers/2025/offer-uoft-commerce-2025.png" },
+  { school: "UBC 英属哥伦比亚大学", major: "本科", background: "AL A*A*AB / 雅思6.5", image: "/images/offers/2025/offer-ubc-2025.png" },
+  { school: "东北大学", major: "计算机科学硕士", background: "双非一本 / 均分87.88 / 托福107", image: "/images/offers/2025/offer-neu-cs-2025.png" },
+  { school: "澳洲国立大学", major: "市场营销管理硕士", background: "海外本科 / GPA 5.33 / 免语言", image: "/images/offers/2025/offer-anu-marketing-2025.png" },
+  { school: "悉尼大学", major: "商学学士", background: "普高转ACT 33 / 雅思6.0", image: "/images/offers/2025/offer-usyd-commerce-2025.png" },
+  { school: "新南威尔士大学", major: "本科", background: "普高转ACT 34 / 雅思7.0", image: "/images/offers/2025/offer-unsw-2025.png" },
+  { school: "待定", major: "待定", background: "待补充", image: "/images/offers/2025/offer-unknown-1-2025.png" },
+  { school: "待定", major: "待定", background: "待补充", image: "/images/offers/2025/offer-unknown-2-2025.png" },
+];

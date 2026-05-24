@@ -12,6 +12,7 @@ import {
   destinations,
   programTypes,
   successCases,
+  offerImages,
   contacts,
   serviceCenters,
   backgroundResources,
@@ -43,6 +44,7 @@ const Header: React.FC = () => {
           <Link href="#services" className="text-gray-600 hover:text-blue-600 font-medium text-sm">核心服务</Link>
           <Link href="#destinations" className="text-gray-600 hover:text-blue-600 font-medium text-sm">留学国家</Link>
           <Link href="#cases" className="text-gray-600 hover:text-blue-600 font-medium text-sm">成功案例</Link>
+          <Link href="#offers" className="text-gray-600 hover:text-blue-600 font-medium text-sm">录取捷报</Link>
           <Link href="#contact" className="text-gray-600 hover:text-blue-600 font-medium text-sm">联系我们</Link>
           <Link href="#contact">
             <Button variant="primary" size="sm">
@@ -71,10 +73,10 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="lg:hidden bg-white border-t border-gray-100 py-4 px-4">
           <ul className="flex flex-col space-y-3">
-            {['首页', '关于我们', '核心服务', '留学国家', '成功案例', '联系我们'].map((item, i) => (
+            {['首页', '关于我们', '核心服务', '留学国家', '成功案例', '录取捷报', '联系我们'].map((item, i) => (
               <li key={i}>
                 <Link
-                  href={`#${['home', 'about', 'services', 'destinations', 'cases', 'contact'][i]}`}
+                  href={`#${['home', 'about', 'services', 'destinations', 'cases', 'offers', 'contact'][i]}`}
                   className="block text-gray-600 hover:text-blue-600 font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -388,6 +390,44 @@ const CasesSection: React.FC = () => (
   </Section>
 );
 
+// ---------- Offer Gallery Section ----------
+const OfferGallerySection: React.FC = () => (
+  <Section id="offers" background="white">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">🎉 2025 录取捷报</h2>
+      <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        恭喜子远学员斩获全球顶尖名校录取，实力见证！
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {offerImages.map((offer, i) => (
+        <a
+          key={i}
+          href={offer.image}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:border-blue-200 transition-all duration-300 hover:-translate-y-1"
+        >
+          <div className="aspect-[3/4] overflow-hidden bg-gray-50">
+            <img
+              src={offer.image}
+              alt={`${offer.school}录取捷报`}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+          <div className="p-4">
+            <div className="font-bold text-gray-900 text-lg">{offer.school}</div>
+            <div className="text-sm text-blue-600 font-medium mt-1">{offer.major}</div>
+            <div className="text-xs text-gray-400 mt-2">{offer.background}</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </Section>
+);
+
 // ---------- Contact Section ----------
 const ContactSection: React.FC = () => (
   <Section id="contact" background="white">
@@ -462,6 +502,7 @@ export default function Home() {
       <ServicesSection />
       <DestinationsSection />
       <CasesSection />
+      <OfferGallerySection />
       <ContactSection />
 
       {/* Footer */}
