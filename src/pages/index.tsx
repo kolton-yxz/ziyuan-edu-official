@@ -407,15 +407,7 @@ const ContactSection: React.FC = () => (
         <h3 className="text-xl font-bold text-gray-900 mb-1">Mora老师</h3>
         <p className="text-blue-600 font-medium mb-4">📱 {contacts[0].phone}</p>
         <div className="bg-white rounded-xl p-4 inline-block shadow-sm">
-          {/* WeChat QR Code placeholder */}
-          <div className="w-48 h-48 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 text-sm">
-            <div className="text-center">
-              <div className="text-4xl mb-2">📱</div>
-              <div>Mora老师</div>
-              <div className="text-xs mt-1">微信二维码</div>
-              <div className="text-xs text-gray-300 mt-1">/images/contact/wechat-mora.png</div>
-            </div>
-          </div>
+          <img src={contacts[0].wechatQr} alt={`${contacts[0].name}微信二维码`} className="w-48 h-48 object-contain rounded-lg" />
         </div>
       </div>
 
@@ -427,15 +419,7 @@ const ContactSection: React.FC = () => (
         <h3 className="text-xl font-bold text-gray-900 mb-1">May老师</h3>
         <p className="text-blue-600 font-medium mb-4">📱 {contacts[1].phone}</p>
         <div className="bg-white rounded-xl p-4 inline-block shadow-sm">
-          {/* WeChat QR Code placeholder */}
-          <div className="w-48 h-48 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 text-sm">
-            <div className="text-center">
-              <div className="text-4xl mb-2">📱</div>
-              <div>May老师</div>
-              <div className="text-xs mt-1">微信二维码</div>
-              <div className="text-xs text-gray-300 mt-1">/images/contact/wechat-may.png</div>
-            </div>
-          </div>
+          <img src={contacts[1].wechatQr} alt={`${contacts[1].name}微信二维码`} className="w-48 h-48 object-contain rounded-lg" />
         </div>
       </div>
 
